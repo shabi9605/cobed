@@ -1,0 +1,60 @@
+{% extends 'dashboard/index.html' %}
+{% block content %}
+			<div id="page-wrapper">
+				<div class="graphs">
+					<h3 class="blank1"></h3>
+                     <div class="xs tabls">
+						<div class="bs-example4" data-example-id="contextual-table">
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Gender</th>
+                                    <th>Phone</th>
+                                   
+                                   
+                                     <th>pincode</th> 
+                                     
+                                      <th>Pre Covid Disease</th>
+                                      <th>Post Covid Disease</th>
+                          
+                                  </tr>
+                                  
+                                </thead>
+                                <tbody>
+                                  {% if list %}
+
+                                    {% for l in list %}
+                                  <tr class="active">
+                                      <td class="serial">{{ forloop.counter }}</td>
+                                      <td>{{l.patient.name}}</td>
+                                      <td>{{l.patient.gender}}</td>
+                                     
+                                      
+                                      <td>{{l.patient.phone}}</td>
+                                      
+                                     
+                                      <td>{{l.patient.pincode}}</td>
+                                      <td>{{l.pre_covid_dis}}</td>
+                                      <td>{{l.post_covid_dis}}</td>
+                                      
+
+                                </tr>
+                                  {% endfor %}
+                                  </tbody>
+                                  {% else %}
+                                  <br>
+                                  <h2>No List Added</h2>
+                                  {% endif %}
+                              </table>
+					   </div>
+					   
+						</div><!-- /.table-responsive -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    
+		{% endblock %}

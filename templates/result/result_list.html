@@ -1,0 +1,86 @@
+{% extends 'dashboard/index.html' %}
+{% block content %}
+			<div id="page-wrapper">
+				<div class="graphs">
+					<h3 class="blank1"></h3>
+                    <form action="{% url 'search_patients' %}" method="get" style="margin:3em; max-width:800px">
+						{% csrf_token %}
+						<input type="search" placeholder="Enter name or admission no " name="query" id='search-text-input' style="width: 23em;">
+						<button sty><i class="fa fa-search" aria-hidden="true"></i></button>
+					</form>	
+					 <div class="xs tabls">
+						<div class="bs-example4" data-example-id="contextual-table">
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Positive Cases</th>
+                                    <th>Negative Cases</th>
+                                    <th>shifted to cfltc</th>
+                                    <th>home quratine </th>
+                                     <th>dead by corona</th>
+                                     <!-- <th>Adhar</th> -->
+                                     <!-- <th>House Name</th>
+                                     <th>Place</th>
+                                    <th>Authority Type</th>
+                                     <th>Authority Name</th> -->
+                                     <!-- <th>Ward No</th>
+                                     <th>village</th> -->
+                                     <!-- <th>district</th> -->
+                                     <!-- <th>pincode</th>  -->
+                                        <!-- <th>Test Date</th>
+                                      <th>Test Name</th> -->
+                                    <!-- <th>Present Status</th> -->
+                                      <!-- <th>Update Patient</th> -->
+                                      <!-- <th>Delete</th> -->
+                          
+                                  </tr>
+                                  
+                                </thead>
+                                <tbody>
+                                  {% if h %}
+
+                                    {% for l in list %}
+                                  <tr class="active">
+                                      <td class="serial">{{ forloop.counter }}</td>
+                                      <td>{{l.patient.name}}</td>
+                                      <td>{{l.patient.gender}}</td>
+                                      <td>{{l.patient.age}}</td>
+                                      <!-- <td>{{l.email}}</td> -->
+                                      <td>{{l.patient.phone}}</td>
+                                      <td>{{l.patient.adhar}}</td>
+                                      <!-- <td>{{l.house_name}}</td>
+                                      <td>{{l.place}}</td>
+                                      <td>{{l.authority_type}}</td>
+                                      <td>{{l.authority_name}}</td> -->
+                                      <!-- <td>{{l.ward_no}}</td>
+                                      <td>{{l.village}}</td>
+                                      <td>{{l.district}}</td> -->
+                                      <td>{{l.patient.pincode}}</td>
+                                      {% if l.patient_status == None %}
+                                        <td>Not Updated</td>
+                                        {% else %}
+                                        <td>{{l.patient_status}}</td>
+                                        {% endif %}
+      
+                                        <td><a href="{% url 'bed_statusr' l.id%}">Add Patient status</a></td>
+                                  	<!-- <td><a href="{% url 'delete_patient_lab' l.id%}" style="color: red;" onclick="return confirm('are u sure d u want to delete this record')">Delete</a></td> -->
+
+                                </tr>
+                                  {% endfor %}
+                                  </tbody>
+                                  {% else %}
+                                  <br>
+                                  <h2>No List Added</h2>
+                                  {% endif %}
+                              </table>
+					   </div>
+					   
+						</div><!-- /.table-responsive -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    
+		{% endblock %}

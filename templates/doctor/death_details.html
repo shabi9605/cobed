@@ -1,0 +1,52 @@
+{% extends 'dashboard/index.html' %}
+{% block content %}
+			<div id="page-wrapper">
+				<div class="graphs">
+					<h3 class="blank1"></h3>
+                  
+					 <div class="xs tabls">
+						<div class="bs-example4" data-example-id="contextual-table">
+                            <table class="table">
+                                {% if d %}
+                                <thead>
+                                    <tr>
+                                      <th>Name</th>
+                                      <th>Death date</th>
+                                      <th>appruve</th>
+                                      <th>Appruve Now</th>
+                                     
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for l in d %}
+                                    <tr>
+                                        <td>{{l.patient}}</td>
+                                        <td>{{l.death_date}}</td>
+                                        {% if l.appruval == True %}
+                                        <td>Appruved</td>
+                                        {% else %}
+                                        <td> Not Appruved</td>
+                                        {% endif %}
+                                        
+                                        
+                                        <td><a href="{% url 'update_death' l.id %}" style="color: red;">Appruve</a></td>
+        
+        
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            {% else %}
+                            <h1>No result found</h1>
+                            {% endif %}
+                              </table>
+					   </div>
+					   
+						</div><!-- /.table-responsive -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+    
+		{% endblock %}

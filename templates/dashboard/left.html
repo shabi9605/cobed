@@ -1,0 +1,564 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <head>
+        <title>Cobed</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="keywords" content="Easy Admin Panel Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+        Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+        <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+         <!-- Bootstrap Core CSS -->
+        <link href="/static/dashboard/css/bootstrap.min.css" rel='stylesheet' type='text/css' />
+        <!-- Custom CSS -->
+        <link href="/static/dashboard/css/style.css" rel='stylesheet' type='text/css' />
+        <!-- Graph CSS -->
+        <link href="/static/dashboard/css/font-awesome.css" rel="stylesheet"> 
+        <!-- jQuery -->
+        <!-- lined-icons -->
+        <link rel="stylesheet" href="/static/dashboard/css/icon-font.min.css" type='text/css' />
+        <!-- //lined-icons -->
+        <!-- chart -->
+        <script src="/static/dashboard/js/Chart.js"></script>
+        <!-- //chart -->
+        <!--animate-->
+        <link href="/static/dashboard/css/animate.css" rel="stylesheet" type="text/css" media="all">
+        <script src="/static/dashboard/js/wow.min.js"></script>
+            <script>
+                 new WOW().init();
+            </script>
+        <!--//end-animate-->
+        <!----webfonts--->
+        <link href='//fonts.googleapis.com/css?family=Cabin:400,400italic,500,500italic,600,600italic,700,700italic' rel='stylesheet' type='text/css'>
+        <!---//webfonts---> 
+         <!-- Meters graphs -->
+        <script src="/static/dashboard/js/jquery-1.10.2.min.js"></script>
+        <!-- Placed js at the end of the document so the pages load faster -->
+        
+        </head> 
+           
+         <body class="sticky-header left-side-collapsed"  onload="initMap()">
+            <section>
+            <!-- left side start-->
+                <div class="left-side sticky-left-side">
+        
+                    <!--logo and iconic logo start-->
+                    <div class="logo">
+                        <h1><a href="{% url 'dashboard' %}">Co<span>Bed</span></a></h1>
+                    </div>
+                    <div class="logo-icon text-center">
+                        <a href="{% url 'index' %}"><i class="lnr lnr-home"></i> </a>
+                    </div>
+  
+        
+                    <!--logo and iconic logo end-->
+                    <div class="left-side-inner">
+        
+                        <!--sidebar nav start-->
+                            <ul class="nav nav-pills nav-stacked custom-nav">
+                                <li class="active"><a href="{% url 'dashboard' %}"><i class="lnr lnr-power-switch"></i><span>Dashboard</span></a></li>
+                                
+                                {% if user.is_superuser %}
+                                <li class="active"><a href="{% url 'admin:index' %}"><i class="lnr lnr-power-switch"></i><span>Admin</span></a></li>
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-cog"></i>
+                                        <span>For Appruval</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'allcenters' %}">Centers</a> </li>
+                                            <li><a href="{% url 'all_labs' %}">Labs</a></li>
+                                            <li><a href="{% url 'all_dmo' %}">DMO</a></li>
+                                            <li><a href="{% url 'all_home' %}">Home</a></li>
+                                            <li><a href="{% url 'all_doctor' %}">Doctors </a></li>
+
+                                        </ul>
+                                </li>
+
+                                {% endif %}
+                                
+                                {% if user.center.center_type == 'Hospital' %}
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Patient </span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'patient_list' %}">All From Lab Patients</a> </li>    
+                                            <li><a href="{% url 'hospital_patient' %}">Hospital Patient List</a> </li>  
+                                            <li><a href="{% url 'status' %}">Patient Status Updation</a> </li>  
+                                            <li><a href="{% url 'newpatient' %}">Add Patient</a> </li>  
+
+                                        </ul>
+                                </li>
+
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-cog"></i>
+                                        <span>Bed</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'add_bed' %}">Room</a> </li>
+                                            <li><a href="{% url 'add_bed1' %}">Ward</a></li>
+                                            <li><a href="{% url 'add_bed2' %}">ICU</a></li>
+                                            <li><a href="{% url 'add_bed3' %}">Ventilator</a></li>
+                                            <li><a href="{% url 'all_bed' %}">Your Bed List</a></li>
+
+                                        </ul>
+                                </li>
+
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-cog"></i>
+                                        <span>Labs</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'view_labs' %}">View Labs</a> </li>
+                                            
+
+                                        </ul>
+                                </li>
+
+                                
+
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Dieses and Vaccine</span></a>
+                                        <ul class="sub-menu-list">
+
+                                            <li><a href="{% url 'centerpatients' %}">Patient List</a> </li>    
+                                        </ul>
+                                </li>
+                                
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Doctor Registration</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'doctor_register' %}">Doctor Registration</a> </li>    
+                                            <li><a href="{% url 'view_hospital_doctors' %}">View Doctors</a> </li>    
+                                        </ul>
+                                </li>
+
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Patient Vaccine Details</span></a>
+                                        <ul class="sub-menu-list">
+
+                                            <li><a href="{% url 'center_vaccine_list' %}">Vaccine List</a> </li>    
+                                        </ul>
+                                </li>
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-cog"></i>
+                                        <span>Complaint Box</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'complaint_list' %}">Complaints</a> </li>
+                                            <!-- <li><a href="">Staff</a></li> -->
+                                        </ul>
+                                </li>
+                                {% elif user.center.center_type == 'CFLTC' %}
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Patient </span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'patient_list' %}">All From Lab Patients</a> </li>    
+                                            <li><a href="{% url 'hospital_patient' %}">Hospital Patient List</a> </li>  
+                                            <li><a href="{% url 'status' %}">Patient Status Updation</a> </li>  
+                                            <li><a href="{% url 'newpatientcfltc' %}">Add Patient</a> </li>  
+
+                                        </ul>
+                                </li>
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Doctor Registration</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'doctor_register' %}">Doctor Registration</a> </li>    
+                                        </ul>
+                                </li>
+
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-cog"></i>
+                                        <span>Bed</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'add_bed' %}">Room</a> </li>
+                                            <li><a href="{% url 'add_bed1' %}">Ward</a></li>
+                                            <li><a href="{% url 'all_bed' %}">Your Bed List</a></li>
+
+                                        </ul>
+                                </li>
+
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Dieses and Vaccine</span></a>
+                                        <ul class="sub-menu-list">
+
+                                            <li><a href="{% url 'centerpatients' %}">Patient List</a> </li>    
+                                        </ul>
+                                </li>
+
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Patient Vaccine Details</span></a>
+                                        <ul class="sub-menu-list">
+
+                                            <li><a href="{% url 'center_vaccine_list' %}">Vaccine List</a> </li>    
+                                        </ul>
+                                </li>
+                                {% elif user.center.center_type == 'CSLTC' %}
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Patient </span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'patient_list' %}">All From Lab Patients</a> </li>    
+                                            <li><a href="{% url 'hospital_patient' %}">Hospital Patient List</a> </li>  
+                                            <li><a href="{% url 'status' %}">Patient Status Updation</a> </li>  
+                                            <li><a href="{% url 'newpatientcfltc' %}">Add Patient</a> </li>  
+
+                                        </ul>
+                                </li>
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Doctor Registration</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'doctor_register' %}">Doctor Registration</a> </li>    
+                                        </ul>
+                                </li>
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-cog"></i>
+                                        <span>Bed</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'add_bed' %}">Room</a> </li>
+                                            <li><a href="{% url 'add_bed1' %}">Ward</a></li>
+
+                                            <li><a href="{% url 'all_bed' %}">Your Bed List</a></li>
+
+                                        </ul>
+                                </li>
+
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Dieses and Vaccine</span></a>
+                                        <ul class="sub-menu-list">
+
+                                            <li><a href="{% url 'centerpatients' %}">Patient List</a> </li>    
+                                        </ul>
+                                </li>
+
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Patient Vaccine Details</span></a>
+                                        <ul class="sub-menu-list">
+
+                                            <li><a href="{% url 'center_vaccine_list' %}">Vaccine List</a> </li>    
+                                        </ul>
+                                </li>
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-cog"></i>
+                                        <span>Complaint Box</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'complaint_list' %}">Complaints</a> </li>
+                                            <!-- <li><a href="">Staff</a></li> -->
+                                        </ul>
+                                </li>
+                                {% elif user.center.center_type == 'Domicile' %}
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Patient </span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'patient_list' %}">All From Lab Patients</a> </li>    
+                                            <li><a href="{% url 'hospital_patient' %}">Hospital Patient List</a> </li>  
+                                            <li><a href="{% url 'status' %}">Patient Status Updation</a> </li>  
+                                            <li><a href="{% url 'newpatientdom' %}">Add Patient</a> </li>  
+
+                                        </ul>
+                                </li>
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Doctor New Doctor</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'doctor_register' %}">Doctor Registration</a> </li>    
+                                        </ul>
+                                </li>
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-cog"></i>
+                                        <span>Bed</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'add_bed' %}">Room</a> </li>
+                                           
+                                            <li><a href="{% url 'all_bed' %}">Your Bed List</a></li>
+
+                                        </ul>
+                                </li>
+                                
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Dieses and Vaccine</span></a>
+                                        <ul class="sub-menu-list">
+
+                                            <li><a href="{% url 'centerpatients' %}">Patient List</a> </li>    
+                                        </ul>
+                                </li>
+
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Patient Vaccine Details</span></a>
+                                        <ul class="sub-menu-list">
+
+                                            <li><a href="{% url 'center_vaccine_list' %}">Vaccine List</a> </li>    
+                                        </ul>
+                                </li>
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-cog"></i>
+                                        <span>Complaint Box</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'complaint_list' %}">Complaints</a> </li>
+                                            <!-- <li><a href="">Staff</a></li> -->
+                                        </ul>
+                                </li>
+                                {% elif user.home %}
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-cog"></i>
+                                        <span>Death</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'patient_death' %}">Death Reporting</a> </li>
+                                            <li><a href="{% url 'death_home' %}">Doctor appruval view</a> </li>
+
+                                        </ul>
+                                </li>
+
+                                
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Home patient</span></a>
+                                        <ul class="sub-menu-list">
+
+                                            <li><a href="{% url 'newpatienthome' %}">Add Home patients</a> </li>    
+
+                                            <li><a href="{% url 'home_view_patients' %}">Patient List</a> </li>    
+                                        </ul>
+                                </li>
+
+
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Dieses and Vaccine</span></a>
+                                        <ul class="sub-menu-list">
+
+                                            <li><a href="{% url 'patientshome' %}">Patient List</a> </li>    
+                                        </ul>
+                                </li>
+
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Complaints</span></a>
+                                        <ul class="sub-menu-list">
+
+                                            <li><a href="{% url 'home_view_complaint' %}">View Complaints</a> </li>    
+                                        </ul>
+                                </li>
+
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Patient Vaccine Details</span></a>
+                                        <ul class="sub-menu-list">
+
+                                            <li><a href="{% url 'center_vaccine_list' %}">Vaccine List</a> </li>    
+                                        </ul>
+                                </li>
+                                {% elif user.patient_register %}
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Your Details</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'view_details' %}">Click Here</a> </li>    
+
+                                            <!-- <li><a href="">Details</a> </li>     -->
+                                        </ul>
+                                </li>
+
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Chat </span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'patient_chat' %}">Chat With Doctor</a> </li>    
+                                            <li><a href="{% url 'view_patient_chat' %}">View My Chats</a> </li>    
+
+                                            <!-- <li><a href="">Details</a> </li>     -->
+                                        </ul>
+                                </li>
+                                
+                                
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-cog"></i>
+                                        <span>Complaint Box</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'complaint' %}">Add Complaint</a> </li>
+                                            <li><a href="{% url 'com_replay_view' %}">Complaint Replay View</a></li>
+                                        </ul>
+                                </li>
+
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-cog"></i>
+                                        <span>Chat Box</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'chat' %}">Chat with Doctor</a> </li>
+                                            <li><a href="{% url 'chat_replay_view' %}"> Replay View</a></li>
+                                        </ul>
+                                </li>
+                                {% elif user.userregister %}
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Search</span></a>
+                                        <ul class="sub-menu-list">
+
+                                            <li><a href="{% url 'hospital_search' %}">Search Hospital</a> </li>    
+                                            <li><a href="{% url 'domicile_search' %}">Search Domicile</a> </li>    
+                                            <li><a href="{% url 'csltc_search' %}">Search CSLTC</a> </li> 
+                                            <li><a href="{% url 'cfltc_search' %}">Search CFLTC</a> </li> 
+                                            <li><a href="{% url 'search_home' %}">Search Home</a> </li>       
+                                            <li><a href="{% url 'search_lab' %}">Search Lab</a> </li>       
+                                        </ul>
+                                </li>
+
+                                
+                                
+                               
+                                {% elif user.lab.lab_type == 'hospital' %}
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Test </span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'add_test' %}">Add Test and Cost</a> </li>    
+
+                                            <li><a href="{% url 'test_list' %}">Test List</a> </li>    
+                                        </ul>
+                                </li>
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Patient Register </span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'patient_register' %}">Patient Register</a> </li>    
+
+                                           
+                                        </ul>
+                                </li>
+                                
+                                
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-cog"></i>
+                                        <span>Staus Updation</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'lab_data' %}">Lab</a> </li>
+                                            <li><a href="{% url 'patient_status_list' %}">Patient</a></li>
+                                            <!-- <li><a href="">Staff</a></li> -->
+                                        </ul>
+                                </li>
+
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Patient </span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'add_patient_lab' %}">Add Patient Basic</a> </li>    
+
+                                            <li><a href="{% url 'lab_patient_view' %}">Patient List</a> </li>    
+                                        </ul>
+                                </li>
+                                {% elif user.lab.lab_type == 'private' %}
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Test </span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'add_test' %}">Add Test and Cost</a> </li>    
+
+                                            <li><a href="{% url 'test_list' %}">Test List</a> </li>    
+                                        </ul>
+                                </li>
+
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Patient Register </span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'patient_register' %}">Patient Register</a> </li>    
+
+                                           
+                                        </ul>
+                                </li>
+                                
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-cog"></i>
+                                        <span>Staus Updation</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'lab_data' %}">Lab</a> </li>
+                                            <li><a href="{% url 'patient_status_list' %}">Patient</a></li>
+                                            <!-- <li><a href="">Staff</a></li> -->
+                                        </ul>
+                                </li>
+
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Patient </span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'add_patient_lab' %}">Add Patient Basic</a> </li>    
+
+                                            <li><a href="{% url 'lab_patient_view' %}">Patient List</a> </li>    
+                                        </ul>
+                                </li>
+                                {% elif user.dmo %}
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-cog"></i>
+                                        <span>Complaint Box</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'dmo_view_complaint' %}">Compliant not solving</a> </li>
+                                            
+
+                                        </ul>
+                                </li>
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-menu"></i>
+                                        <span>Search</span></a>
+                                        <ul class="sub-menu-list">
+
+                                            <li><a href="{% url 'hospital_search' %}">Search Hospital</a> </li>    
+                                            <li><a href="{% url 'domicile_search' %}">Search Domicile</a> </li>    
+                                            <li><a href="{% url 'csltc_search' %}">Search CSLTC</a> </li> 
+                                            <li><a href="{% url 'cfltc_search' %}">Search CFLTC</a> </li>
+                                            <li><a href="{% url 'search_home' %}">Search Home</a> </li>    
+                                        </ul>
+                                </li>
+                                <li class="active"><a href="{% url 'inproper_death' %}"><i class="lnr lnr-power-switch"></i><span>Inproper Death</span></a></li>
+                                <li class="active"><a href="{% url 'view_patients' %}"><i class="lnr lnr-power-switch"></i><span>View Patients</span></a></li>
+                                {% elif user.doctor %}
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-cog"></i>
+                                        <span>Chat Box</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'view_my_chat' %}">Chat View</a> </li>
+                                            <li><a href="{% url 'chat' %}">Chat With Patients</a> </li>
+                                            <li><a href="{% url 'chat_replay_view' %}"> Replay View</a></li>
+                                        </ul>
+                                </li>
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-cog"></i>
+                                        <span>Death</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'patient_death' %}">Death Reporting</a> </li>
+                                            <li><a href="{% url 'death_home' %}">Doctor appruval view</a> </li>
+                                            <li><a href="{% url 'view_deaths' %}">Verify Deaths</a> </li>
+                                            <li><a href="{% url 'approved_deaths' %}">Approved Deaths</a> </li>
+
+                                        </ul>
+                                </li>
+
+                                <li class="menu-list">
+                                    <a href="#"><i class="lnr lnr-cog"></i>
+                                        <span>Patients</span></a>
+                                        <ul class="sub-menu-list">
+                                            <li><a href="{% url 'view_all_patients' %}">View Patients</a> </li>
+                                            
+                                        </ul>
+                                </li>
+
+                                {% endif %}
+                              
+                            </ul>
+                        <!--sidebar nav end-->
+                    </div>
+                </div>
+</body>
+</html>

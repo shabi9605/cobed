@@ -1,0 +1,129 @@
+{% extends 'dashboard/index.html' %}
+{% block content %}
+
+<div style="padding-top: 3em;background-color: aqua;padding-bottom: 2em;">
+
+    <form action="{% url 'search_lab' %}" method="GET" style="font-size: 1.2em;"> 
+        {% csrf_token %}
+        <label for="bank" >Select Lab: </label> <select name="hospital" >
+          {% for i in labs %}
+          <option value="{{i.lab_name}}" name="hospital">{{i.lab_name}}</option>
+          {% endfor %}
+      </select>
+        
+        <input type="submit" value='SEARCH'>
+    
+    </form>
+    
+    
+    
+    
+    </div>
+
+    
+
+
+
+
+
+
+<div class="table-responsive table-shadow" style="background-color: bisque;margin-left: 2em;margin-right: 2em;margin-top: 1em;">
+    <h1>Lab Details</h1>
+    
+    <table class="table">
+          <thead>
+            <tr>
+              <!-- <th scope="col">#</th> -->
+              <th scope="col">Lab Name</th>
+              <th scope="col">Center</th>
+              <th scope="col">Location</th>
+              <th scope="col">District</th>
+              <th scope="col">Pincode</th>
+              <th scope="col">Type</th>
+              <th scope="col">Availability</th>
+              
+              
+              
+            </tr>
+          </thead>
+          <tbody>
+              
+            <tr style="background-color: #d9a3a3;">
+               
+              <td>{{ lab.lab_name}}</td>
+              <td>{{lab.center}}</td>
+              
+              <td>{{lab.loaction}}</td>
+              <td>{{lab.lab_district}}</td>
+              <td>{{lab.lab_pincode}}</td>
+              <td>{{lab.lab_type}}</td>
+              <td>{{lab.lab_avilability}}</td>
+            
+              
+              
+              
+
+
+             
+            </tr>
+
+          
+
+          </tbody>
+
+    </table>
+   
+</div>
+
+
+
+<div class="table-responsive table-shadow" style="background-color: bisque;margin-left: 2em;margin-right: 2em;margin-top: 1em;">
+  <h1>Test Details</h1>
+  
+  <table class="table">
+        <thead>
+          <tr>
+            <!-- <th scope="col">#</th> -->
+            <th scope="col">Lab Name</th>
+            <th scope="col">Test Name</th>
+            <th scope="col">Test Cost</th>
+            <th scope="col">Test Availability</th>
+            
+            
+            
+            
+          </tr>
+        </thead>
+        <tbody>
+            {% for i in test %}
+          <tr style="background-color: #d9a3a3;">
+            
+             
+            <td>{{ i.lab.lab_name}}</td>
+            <td>{{i.test_name}}</td>
+            
+            <td>{{i.test_cost}}</td>
+            <td>{{i.test_avilability}}</td>
+           
+          
+            
+            
+            
+
+
+           
+          </tr>
+          {% endfor %}
+
+        
+
+        </tbody>
+
+  </table>
+ 
+</div>
+
+
+
+
+    {% endblock %}

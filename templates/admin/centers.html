@@ -1,0 +1,60 @@
+{% extends 'dashboard/index.html' %}
+{% block content %}
+
+			<div id="page-wrapper">
+				<div class="graphs">
+					<h3 class="blank1">Centers</h3>
+					 <div class="xs tabls">
+						<div class="bs-example4" data-example-id="contextual-table">
+                            <table class="table">
+                                {% if c %}
+                                <thead>
+                                    <tr>
+                                      <th>Name</th>
+                                      <th>Center Type</th>  
+                                      <th>PhoneNumber</th>
+                                       <th>Place</th>
+                                       <th>Authority Type</th>
+                                       <th>Pincode</th>
+                                       <th>Center Proof</th>
+                                        <th>Center Image</th>
+                                        <th>Approve Center</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for l in c %}
+                                    <tr>
+                                        <td>{{l.center_name}}</td>
+                                        <td>{{l.center_type}}</td>
+                                        <td>{{l.center_phone}}</td>
+                                        <td>{{l.center_place}}</td>
+                                        <td>{{l.authority_type}}</td>
+                                        <td>{{l.center_pincode}}</td>
+                                        <td><a href="{{l.center_ideantification_proof.url}}">Proof</a></td>
+                                        <td><img src="{{l.center_photo.url}}" height="20em"></td>
+                                        {% if l.status_appruval == True %}
+                                        <td>Approved</td>
+                                        {% else %}
+                                        
+                                        <td><a href="{% url 'centerappruval' l.id %}" style="color: red ; ">Approve Now</a></td>
+        
+                                        {% endif %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            {% else %}
+                            <h4>No Centers Registerd For appruval</h4>
+                            {% endif %}
+                                  
+					   </div>
+					   
+						</div><!-- /.table-responsive -->
+						</div>
+					</div>
+				</div>
+			</div>
+           
+		</div>
+   
+		{% endblock %}

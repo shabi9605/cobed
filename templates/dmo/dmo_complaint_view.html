@@ -1,0 +1,51 @@
+{% extends 'dashboard/index.html' %}
+{% block content %}
+{% if com %}
+			<div id="page-wrapper">
+				<div class="graphs">
+					<h3 class="blank1">Compliant</h3>
+					 <div class="xs tabls">
+						<div class="bs-example4" data-example-id="contextual-table">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                      <th>Name</th>
+                                      <th>Complaint</th>
+                                      <th>Replay</th>
+                                      <!-- <th>Complaint Date</th> -->
+                                       <!-- <th>Replay Date</th> -->
+                                       
+                                        <th>Replay</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for l in com %}
+                                    <tr>
+                                        <td>{{l.user}}</td>
+                                        <td>{{l.complaint}}</td>
+                                        <td>{{l.replay}}</td>
+                                        <!-- <td>{{l.created_date}}</td> -->
+                                        <!-- <td>{{l.replay_date}}</td> -->
+                                        
+                                        <td><a href="{% url 'complaint_replay' l.id %}" style="color: red;">Replay</a></td>
+        
+        
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                     
+                                  
+					   </div>
+					   
+						</div><!-- /.table-responsive -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        {% else %}
+        <br>
+        <h2>No Complaint Found</h2>
+        {% endif %}
+		{% endblock %}

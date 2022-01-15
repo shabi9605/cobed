@@ -1,0 +1,300 @@
+{% extends 'dashboard/index.html' %}
+{% block content %}
+
+			<div id="page-wrapper">
+				<div class="graphs">
+					<h3 class="blank1">Bed List</h3>
+					 <div class="xs tabls">
+						<div class="bs-example4" data-example-id="contextual-table">
+
+                            {% if user.center.center_type == 'Hospital' %}
+                            <table class="table">
+                                {% if r %}
+                                <thead>
+                                    <tr>
+                                        <!-- <th>Name</th> -->
+                                        <th>Bed No</th>
+                                        <th>Room No</th>
+                                        <th>Floor No</th>
+                                         <!-- <th>Ward No</th>
+                                         <th>ICU No</th>
+                                          <th>Vantilator No</th> -->
+                                          <th>Bed With Oxygen</th>
+                                          <!-- <th>Bed Gender Type</th> -->
+                                      
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      {% for l in r %}
+                                      <tr>
+                                          <!-- <td>{{l.user}}</td> -->
+                                          <td>{{l.bed_no}}</td>
+                                          <td>{{l.room_no}}</td>
+                                          <td>{{l.floor_no}}</td>
+                                          <!-- <td>{{l.ward_no}}</td>
+                                          <td>{{l.icu_no}}</td>
+                                          <td>{{l.ventilator_no}}</td> -->
+                                          <td>{{l.bed_with_oxygen}}</td>
+                                          <!-- <td>{{l.bed_gender}}</td> -->
+                                          
+          
+                                      </tr>
+                                      {% endfor %}
+                                  </tbody>
+                                  {% else %}
+                                  <br>
+                                  <h2>No List Added</h2>
+                                  {% endif %}
+                              </table>
+
+
+
+                              <h1>Ward</h1>
+                              <table class="table">
+                                {% if w %}
+                                <thead>
+                                    <tr>
+                                        <!-- <th>Name</th> -->
+                                        <th>Bed No</th>
+                                        <!-- <th>Room No</th> -->
+                                        <th>Floor No</th>
+                                         <th>Ward No</th>
+                                         <!-- <th>ICU No</th> -->
+                                          <!-- <th>Vantilator No</th>  -->
+                                          <th>Bed With Oxygen</th>
+                                          <!-- <th>Bed Gender Type</th> -->
+                                      
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      {% for l in w %}
+                                      <tr>
+                                          <!-- <td>{{l.user}}</td> -->
+                                          <td>{{l.bed_no}}</td>
+                                          <!-- <td>{{l.room_no}}</td> -->
+                                          <td>{{l.floor_no}}</td>
+                                          <td>{{l.ward_no}}</td>
+                                          <!-- <td>{{l.icu_no}}</td> -->
+                                          <!-- <td>{{l.ventilator_no}}</td>  -->
+                                          <td>{{l.bed_with_oxygen}}</td>
+                                          <!-- <td>{{l.bed_gender}}</td> -->
+                                    
+          
+                                      </tr>
+                                      {% endfor %}
+                                  </tbody>
+                                  {% else %}
+                                  <br>
+                                  <h2>No List Added</h2>
+                                  {% endif %}
+                              </table>
+
+                              <h1>ICU</h1>
+                              <table class="table">
+                                {% if i %}
+                                <thead>
+                                    <tr>
+                                        <!-- <th>Name</th> -->
+                                        <th>Bed No</th>
+                                        <!-- <th>Room No</th> -->
+                                        <th>Floor No</th>
+                                         <!-- <th>Ward No</th> -->
+                                         <th>ICU No</th>
+                                          <!-- <th>Vantilator No</th>  -->
+                                          <th>Bed With Oxygen</th>
+                                          <!-- <th>Bed Gender Type</th> -->
+                                      
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      {% for l in i %}
+                                      <tr>
+                                          <!-- <td>{{l.user}}</td> -->
+                                          <td>{{l.bed_no}}</td>
+                                          <!-- <td>{{l.room_no}}</td> -->
+                                          <td>{{l.floor_no}}</td>
+                                          <!-- <td>{{l.ward_no}}</td> -->
+                                          <td>{{l.icu_no}}</td>
+                                          <!-- <td>{{l.ventilator_no}}</td>  -->
+                                          <td>{{l.bed_with_oxygen}}</td>
+                                          <!-- <td>{{l.bed_gender}}</td> -->
+                                    
+          
+                                      </tr>
+                                      {% endfor %}
+                                  </tbody>
+                                  {% else %}
+                                  <br>
+                                  <h2>No List Added</h2>
+                                  {% endif %}
+                              </table>
+
+                             <h1>Ventilator</h1>
+                              <table class="table">
+                                {% if v %}
+                                <thead>
+                                    <tr>
+                                        <!-- <th>Name</th> -->
+                                        <th>Bed No</th>
+                                        <!-- <th>Room No</th> -->
+                                        <th>Floor No</th>
+                                         <!-- <th>Ward No</th> -->
+                                         <!-- <th>ICU No</th> -->
+                                          <th>Vantilator No</th> 
+                                          <th>Bed With Oxygen</th>
+                                          <!-- <th>Bed Gender Type</th> -->
+                                      
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      {% for l in v %}
+                                      <tr>
+                                          <!-- <td>{{l.user}}</td> -->
+                                          <td>{{l.bed_no}}</td>
+                                          <!-- <td>{{l.room_no}}</td> -->
+                                          <td>{{l.floor_no}}</td>
+                                          <!-- <td>{{l.ward_no}}</td> -->
+                                          <!-- <td>{{l.icu_no}}</td> -->
+                                          <td>{{l.ventilator_no}}</td> 
+                                          <td>{{l.bed_with_oxygen}}</td>
+                                          <!-- <td>{{l.bed_gender}}</td> -->
+                                    
+          
+                                      </tr>
+                                      {% endfor %}
+                                  </tbody>
+                                  {% else %}
+                                  <br>
+                                  <h2>No List Added</h2>
+                                  {% endif %}
+                              </table>
+                              {% elif user.center.center_type == 'CFLTC' or user.center.center_type == 'CSLTC' %}
+
+                              <table class="table">
+                                {% if r %}
+                                <thead>
+                                    <tr>
+                                        <!-- <th>Name</th> -->
+                                        <th>Bed No</th>
+                                        <th>Room No</th>
+                                        <th>Floor No</th>
+                                         <!-- <th>Ward No</th>
+                                         <th>ICU No</th>
+                                          <th>Vantilator No</th> -->
+                                          <th>Bed With Oxygen</th>
+                                          <!-- <th>Bed Gender Type</th> -->
+                                      
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      {% for l in r %}
+                                      <tr>
+                                          <!-- <td>{{l.user}}</td> -->
+                                          <td>{{l.bed_no}}</td>
+                                          <td>{{l.room_no}}</td>
+                                          <td>{{l.floor_no}}</td>
+                                          <!-- <td>{{l.ward_no}}</td>
+                                          <td>{{l.icu_no}}</td>
+                                          <td>{{l.ventilator_no}}</td> -->
+                                          <td>{{l.bed_with_oxygen}}</td>
+                                          <!-- <td>{{l.bed_gender}}</td> -->
+                                          
+          
+                                      </tr>
+                                      {% endfor %}
+                                  </tbody>
+                                  {% else %}
+                                  <br>
+                                  <h2>No List Added</h2>
+                                  {% endif %}
+                              </table>
+
+
+
+                              <h1>Ward</h1>
+                              <table class="table">
+                                {% if w %}
+                                <thead>
+                                    <tr>
+                                        <!-- <th>Name</th> -->
+                                        <th>Bed No</th>
+                                        <!-- <th>Room No</th> -->
+                                        <th>Floor No</th>
+                                         <th>Ward No</th>
+                                         <!-- <th>ICU No</th> -->
+                                          <!-- <th>Vantilator No</th>  -->
+                                          <th>Bed With Oxygen</th>
+                                          <!-- <th>Bed Gender Type</th> -->
+                                      
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      {% for l in w %}
+                                      <tr>
+                                          <!-- <td>{{l.user}}</td> -->
+                                          <td>{{l.bed_no}}</td>
+                                          <!-- <td>{{l.room_no}}</td> -->
+                                          <td>{{l.floor_no}}</td>
+                                          <td>{{l.ward_no}}</td>
+                                          <!-- <td>{{l.icu_no}}</td> -->
+                                          <!-- <td>{{l.ventilator_no}}</td>  -->
+                                          <td>{{l.bed_with_oxygen}}</td>
+                                          <!-- <td>{{l.bed_gender}}</td> -->
+                                    
+          
+                                      </tr>
+                                      {% endfor %}
+                                  </tbody>
+                                  {% else %}
+                                  <br>
+                                  <h2>No List Added</h2>
+                                  {% endif %}
+                              </table>
+                              {% elif user.center.center_type == 'Domicile' %}
+                              <table class="table">
+                                {% if r %}
+                                <thead>
+                                    <tr>
+                                        <!-- <th>Name</th> -->
+                                        <th>Bed No</th>
+                                        <th>Room No</th>
+                                        <th>Floor No</th>
+                                         <!-- <th>Ward No</th>
+                                         <th>ICU No</th>
+                                          <th>Vantilator No</th> -->
+                                          <th>Bed With Oxygen</th>
+                                          <!-- <th>Bed Gender Type</th> -->
+                                      
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      {% for l in r %}
+                                      <tr>
+                                          <!-- <td>{{l.user}}</td> -->
+                                          <td>{{l.bed_no}}</td>
+                                          <td>{{l.room_no}}</td>
+                                          <td>{{l.floor_no}}</td>
+                                          <!-- <td>{{l.ward_no}}</td>
+                                          <td>{{l.icu_no}}</td>
+                                          <td>{{l.ventilator_no}}</td> -->
+                                          <td>{{l.bed_with_oxygen}}</td>
+                                          <!-- <td>{{l.bed_gender}}</td> -->
+                                          
+          
+                                      </tr>
+                                      {% endfor %}
+                                  </tbody>
+                                  {% else %}
+                                  <br>
+                                  <h2>No List Added</h2>
+                                  {% endif %}
+                              </table>
+
+                              {% endif %}
+
+
+                        </div>
+					  
+		</div>
+       
+		{% endblock %}

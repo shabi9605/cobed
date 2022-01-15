@@ -1,0 +1,69 @@
+{% extends 'dashboard/index.html' %}
+{% block content %}
+{% if all_patients %}
+			<div id="page-wrapper">
+				<div class="graphs">
+					<h3 class="blank1">Patient Details</h3>
+					 <div class="xs tabls">
+						<div class="bs-example4" data-example-id="contextual-table">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                      <th>Center/Lab</th>
+                                      <th>Patient</th>
+                                      <th>Name</th>
+                                      <!-- <th>Complaint Date</th> -->
+                                       <!-- <th>Replay Date</th> -->
+                                       
+                                        <th>Email</th>
+                                        <th>Age</th>
+                                        <th>Gender</th>
+                                        <th>Phone</th>
+                                        <th>House Name</th>
+                                        <th>Place</th>
+                                        <th>Ward No</th>
+                                        <th>Village</th>
+                                        <th>Pincode</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for l in all_patients %}
+                                    <tr>
+                                        {% if l.patient.center %}
+                                        <td>{{l.patient.center}}</td>
+                                        {% else %}
+                                        <td>{{l.patient.lab}}</td>
+                                        {% endif %}
+                                        <td>{{l.patient.patient}}</td>
+                                        <td>{{l.patient.name}}</td>
+                                        <td>{{l.patient.email}}</td>
+                                        <td>{{l.patient.age}}</td>
+                                        <td>{{l.patient.gender}}</td>
+                                        <td>{{l.patient.phone}}</td>
+                                        <td>{{l.patient.house_name}}</td>
+                                        <td>{{l.patient.place}}</td>
+                                        <td>{{l.patient.ward_no}}</td>
+                                        <td>{{l.patient.village}}</td>
+                                        <td>{{l.patient.pincode}}</td>
+
+                                       
+        
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                     
+                                  
+					   </div>
+					   
+						</div><!-- /.table-responsive -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        {% else %}
+        <br>
+        <h2>No Complaint Found</h2>
+        {% endif %}
+		{% endblock %}

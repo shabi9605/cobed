@@ -1,0 +1,30 @@
+{% extends 'dashboard/index.html' %}
+{% block content %}
+
+<div style="padding-top: 3em;background-color: aqua;padding-bottom: 2em;">
+
+    <form action="" method="POST" style="font-size: 1.2em;"> 
+        {% csrf_token %}
+        <label for="doctor">Choose a Doctor:</label>
+
+        <select name="doctor" id="doctor">
+            {% for i in patients %}
+        <option value="{{i.id}}">{{i.user}}</option>
+        {% endfor %}
+        
+        </select><br>
+        <label for="content">Chat Content</label>
+        <input type="text" name="chat" >
+
+        
+        <input type="submit" value='POST'>
+    
+    </form>
+    
+    
+    
+    
+    </div>
+
+
+    {% endblock %}

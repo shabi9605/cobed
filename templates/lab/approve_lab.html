@@ -1,0 +1,50 @@
+
+{% extends 'dashboard/index.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<!-- //header-ends -->
+			<div id="page-wrapper">
+				<div class="graphs">
+					<h3 class="blank1">Update Forms</h3>
+						<div class="tab-content">
+						<div class="tab-pane active" id="horizontal-form">
+							<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+
+								<div class="form-group">
+									<label for="focusedinput" class="col-sm-2 control-label">Approve</label>
+									<div class="col-sm-8">
+                                        {{form|crispy}}
+										<!-- <input type="text" class="form-control1" id="focusedinput" placeholder="Default Input"> -->
+									</div>
+                                   
+
+								</div>
+								
+								
+
+						  <div class="panel-footer">
+							<div class="row">
+								<div class="col-sm-8 col-sm-offset-2">
+									<button class="btn-success btn">Submit</button>
+									<button class="btn-default btn">Cancel</button>
+									<button class="btn-inverse btn">Reset</button>
+								</div>
+							</div>
+						 </div>
+						</form>
+					  </div>
+				</div>
+			</div>
+		</div>
+		{% endblock %}
+
+
+
+
+
+
+
+
+
+

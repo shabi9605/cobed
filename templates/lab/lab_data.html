@@ -1,0 +1,44 @@
+{% extends 'dashboard/index.html' %}
+{% block content %}
+{% if list %}
+			<div id="page-wrapper">
+				<div class="graphs">
+					<h3 class="blank1"></h3>
+					 <div class="xs tabls">
+						<div class="bs-example4" data-example-id="contextual-table">
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Lab Name</th>
+                                    <th>Lab Avilability</th>
+                                    <th>Update Data</th>
+                                  </tr>
+                                  
+                                </thead>
+                                <tbody>
+                                    {% for l in list %}
+                                  <tr class="active">
+                                      <td class="serial">{{ forloop.counter }}</td>
+                                      <td>{{l.lab_name}}</td>
+                                    <td>{{l.lab_avilability}}</td>
+                                    <td><a href="{% url 'update_availbility' l.id%}">Update</a></td>
+                                  	<!-- <td><a href="{% url 'test_delete' l.id%}" style="color: red;" onclick="return confirm('are u sure d u want to delete this record')">Delete</a></td> -->
+
+                                </tr>
+                                  {% endfor %}
+                                  </tbody>
+                              </table>
+					   </div>
+					   
+						</div><!-- /.table-responsive -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        {% else %}
+        <br>
+        <h2>No List Added</h2>
+        {% endif %}
+		{% endblock %}

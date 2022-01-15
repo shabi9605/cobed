@@ -1,0 +1,51 @@
+{% extends 'dashboard/index.html' %}
+{% block content %}
+{% if labs %}
+			<div id="page-wrapper">
+				<div class="graphs">
+					<h3 class="blank1">Labs </h3>
+					 <div class="xs tabls">
+						<div class="bs-example4" data-example-id="contextual-table">
+                            <table class="table">
+                                <thead><thead>
+                                    <tr>
+                                      <th>Name</th>
+                                      <th>Center</th>
+                                     
+                                      <th>District</th>
+                                      <th>Pincode</th>
+                                      <th>Type</th>
+                                      <th>Availabilty</th>
+                                      <th>Phone Number</th>
+                                      <th>Approve</th>
+                                      
+                                      
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for l in labs %}
+                                    <tr>
+                                        <td>{{l.user}}</td>
+                                        <td>{{l.center}}</td>
+                                       
+                                       <td>{{l.lab_district}}</td>
+                                       <td>{{l.lab_pincode}}</td>
+                                       <td>{{l.lab_type}}</td>
+                                       <td>{{l.lab_avilability}}</td>
+                                       <td>{{l.phonenumber}}</td>
+                                       {% if l.status_appruval == True %}
+                                       <td>Approved</td>
+                                       {% else %}
+                                       <td><a href="{% url 'approve_lab' l.id %}">Approve</a></td>
+                                       {% endif %}
+        
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+        
+                                    </table>
+                                    {% else %}
+                                    <h2>No Labs</h2>
+                                    {% endif %}
+                                  
+		{% endblock %}

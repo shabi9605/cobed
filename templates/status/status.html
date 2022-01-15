@@ -1,0 +1,74 @@
+{% extends 'dashboard/index.html' %}
+{% block content %}
+{% if p %}
+			<div id="page-wrapper">
+				<div class="graphs">
+					<h3 class="blank1">Basic Tables</h3>
+					 <div class="xs tabls">
+						<div class="bs-example4" data-example-id="contextual-table">
+                            <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Gender</th>
+                                    <th>Age</th>
+                                    <!-- <th>Email</th> -->
+                                     <th>Phone</th>
+                                     <th>Adhar</th>
+                                     <th>House Name</th>
+                                     <th>Place</th>
+                                    <th>Authority Type</th>
+                                     <th>Authority Name</th>
+                                     <!-- <th>Ward No</th>
+                                     <th>village</th> -->
+                                     <!-- <th>district</th> -->
+                                     <th>pincode</th> 
+                                        <!-- <th>Test Date</th>
+                                      <th>Test Name</th> -->
+                                        <th>Present Status</th>
+                                      <!-- <th>Update</th> -->
+                                      <!-- <th>Delete</th> -->
+                          
+                                  </tr>
+                                  
+                                </thead>
+                                <tbody>
+                                    {% for l in p %}
+                                  <tr class="active">
+                                      <td class="serial">{{ forloop.counter }}</td>
+                                      <td>{{l.patient.name}}</td>
+                                      <td>{{l.patient.gender}}</td>
+                                      <td>{{l.patient.age}}</td>
+                                      <!-- <td>{{l.email}}</td> -->
+                                      <td>{{l.patient.phone}}</td>
+                                      <td>{{l.patient.adhar}}</td>
+                                      <td>{{l.patient.house_name}}</td>
+                                      <td>{{l.patient.place}}</td>
+                                      <td>{{l.patient.authority_type}}</td>
+                                      <td>{{l.patient.authority_name}}</td>
+                                      <!-- <td>{{l.ward_no}}</td>
+                                      <td>{{l.village}}</td>
+                                      <td>{{l.district}}</td> -->
+                                      <td>{{l.patient.pincode}}</td>
+      
+                                        <td>{{l.patient_status}}</td>
+                                  	<!-- <td><a href="{% url 'delete_patient_lab' l.id%}" style="color: red;" onclick="return confirm('are u sure d u want to delete this record')">Delete</a></td> -->
+
+                                </tr>
+                                  {% endfor %}
+                                  </tbody>
+                              </table>
+					   </div>
+					   
+						</div><!-- /.table-responsive -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+        {% else %}
+        <br>
+        <h2>No List Added</h2>
+        {% endif %}
+		{% endblock %}

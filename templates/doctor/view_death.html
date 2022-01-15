@@ -1,0 +1,70 @@
+{% extends 'dashboard/index.html' %}
+{% block content %}
+
+
+
+    
+<div class="table-responsive table-shadow" style="background-color: bisque;margin-left: 2em;margin-right: 2em;margin-top: 1em;">
+    <h1>Approval Waiting Deaths</h1>
+    {% if deaths %}
+    <table class="table">
+          <thead>
+            <tr>
+              <!-- <th scope="col">#</th> -->
+              <th scope="col">Patient Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Aadhar</th>
+              <th scope="col">Age</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Phone</th>
+              <th scope="col">Place</th>
+              <th scope="col">Death Date</th>
+              <th scope="col">Reason</th>
+              <th scope="col">Center</th>
+              <th scope="col">Appruval</th>
+              <th scope="col">Update</th>
+              
+              
+              
+            </tr>
+          </thead>
+          <tbody>
+              {% for i in deaths %}
+            <tr style="background-color: #d9a3a3;">
+
+              <td>{{ i.patient.name}}</td>
+              <td>{{ i.patient.email}} </td>
+              <td>{{ i.patient.adhar}} </td>
+              <td>{{ i.patient.age}} </td>
+              <td>{{ i.patient.gender}} </td>
+              <td>{{ i.patient.phone}} </td>
+              <td>{{i.patient.place}}</td>
+              <td>{{i.death_date}}</td>
+              <td>{{i.reason}}</td>
+              <td>{{i.center}}</td>
+              {% if i.appruval == False %}
+              <td style="color: brown;font-size: 1.2em;">Not Approved By Doctor</td>
+              {% else %}
+              <td>Doctor Approved</td>
+              {% endif %}
+              <td><a href="{% url 'update_death' i.id %}">Update</a></td>
+              
+              
+
+
+             
+            </tr>
+
+            {% endfor %}
+
+          </tbody>
+
+    </table>
+    {% else %}
+
+    <span>No Salary can be found...</span>
+    {% endif %}
+
+</div>
+
+{% endblock %}

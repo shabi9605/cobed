@@ -1,0 +1,40 @@
+{% extends 'dashboard/index.html' %}
+{% block content %}
+{% if details %}
+			<div id="page-wrapper">
+				<div class="graphs">
+					<h3 class="blank1">Patient </h3>
+					 <div class="xs tabls">
+						<div class="bs-example4" data-example-id="contextual-table">
+                            <table class="table">
+                                <thead><thead>
+                                    <tr>
+                                      <th>Name</th>
+                                      
+                                      <th>Phone</th>
+                                      <th>Adhar</th>
+                                      <th>Pincode</th>
+                                      <!-- <th>Created Date</th> -->
+                                       <!-- <th>Replay Date</th> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                    <tr>
+                                        <td>{{details.name}}</td>
+                                        <td>{{details.phonenumber}}</td>
+                                        <td>{{details.adhar}}</td>
+                                        
+                                        <td>{{details.pincode}}</td>
+                                        
+        
+                                    </tr>
+                               
+                                </tbody>
+        
+                                    </table>
+                                    {% else %}
+                                    <h2>No Complaint</h2>
+                                    {% endif %}
+                                  
+		{% endblock %}

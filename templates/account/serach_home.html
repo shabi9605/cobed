@@ -1,0 +1,175 @@
+{% extends 'dashboard/index.html' %}
+{% block content %}
+
+<div style="padding-top: 3em;background-color: aqua;padding-bottom: 2em;">
+
+    <form action="{% url 'search_home' %}" method="GET" style="font-size: 1.2em;"> 
+        {% csrf_token %}
+        <label for="bank" >Select Home: </label> 
+        <input type="text" name="hospital" id="">
+        <input type="submit" value='SEARCH'>
+    
+    </form>
+    
+    
+    
+    
+    </div>
+
+    
+
+
+
+
+
+
+<div class="table-responsive table-shadow" style="background-color: bisque;margin-left: 2em;margin-right: 2em;margin-top: 1em;">
+    <h1>Todays Report</h1>
+    
+    <table class="table">
+          <thead>
+            <tr>
+              <!-- <th scope="col">#</th> -->
+              <th scope="col">Today Positive</th>
+              <th scope="col">Negative Cases</th>
+             
+              <th scope="col">Male</th>
+              <th scope="col">Female</th>
+              
+              
+              
+            </tr>
+          </thead>
+          <tbody>
+              
+            <tr style="background-color: #d9a3a3;">
+               
+              <td>{{ today_positive}}</td>
+              <td>{{today_negative}}</td>
+              
+              <td>{{tp_male}}</td>
+              <td>{{tp_female}}</td>
+            
+              
+              
+              
+
+
+             
+            </tr>
+
+          
+
+          </tbody>
+
+    </table>
+   
+</div>
+
+
+<div class="table-responsive table-shadow" style="background-color: bisque;margin-left: 2em;margin-right: 2em;margin-top: 1em;padding-bottom: 3em;">
+    <h1>Till Now Cases</h1>
+    
+    <table class="table">
+          <thead>
+            <tr>
+              <!-- <th scope="col">#</th> -->
+              <th scope="col">Total Positive Cases</th>
+              <th scope="col">Total Negative Cases</th>
+              
+              <th scope="col">Male</th>
+              <th scope="col">Female</th>
+              
+              
+              
+            </tr>
+          </thead>
+          <tbody>
+              
+            <tr style="background-color: #d9a3a3;">
+               
+              <td>{{ total_positive_cases}}</td>
+              <td>{{total_negative_cases}}</td>
+              
+              <td>{{total_male}}</td>
+              <td>{{total_female}}</td>
+            
+              
+              
+              
+
+
+             
+            </tr>
+
+          
+
+          </tbody>
+
+    </table>
+   
+</div>
+
+
+{% if user.dmo %}
+
+
+  
+<div class="table-responsive table-shadow" style="background-color: bisque;margin-left: 2em;margin-right: 2em;margin-top: 1em;">
+    <h1>Patient Details</h1>
+    {% if dmo_view_patients %}
+    <table class="table">
+          <thead>
+            <tr>
+              <!-- <th scope="col">#</th> -->
+              <th scope="col">Id</th>
+              <th scope="col">Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Aadhar</th>
+              <th scope="col">Age</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Phone</th>
+              <th scope="col">House Name</th>
+              <th scope="col">Patient Status</th>
+              
+              
+            </tr>
+          </thead>
+          <tbody>
+              {% for i in dmo_view_patients %}
+            <tr style="background-color: #d9a3a3;">
+
+              <td>{{ i.id}}</td>
+              <td>{{ i.patient.name}} </td>
+              <td>{{ i.patient.email}} </td>
+              <td>{{ i.patient.adhar}} </td>
+              <td>{{ i.patient.age}} </td>
+              <td>{{ i.patient.gender}} </td>
+              <td>{{ i.patient.phone}} </td>
+              <td>{{ i.patient.house_name}} </td>
+              <td>{{ i.patient.patient_status}} </td>
+              
+              
+
+
+             
+            </tr>
+
+            {% endfor %}
+
+          </tbody>
+
+    </table>
+    {% else %}
+
+   
+    {% endif %}
+
+</div>
+
+
+
+
+{% endif %}
+
+    {% endblock %}

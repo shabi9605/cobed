@@ -1,0 +1,154 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+{% include 'dashboard/left.html' %}
+		<!-- left side end-->
+    {% include 'dashboard/header.html' %}
+			{% block content %}
+		<!-- //header-ends -->
+	
+		
+			<div id="page-wrapper" >
+				<div class="graphs">
+					<div class="col_3">
+						<div id="page-wrapper">
+							<div class="graphs">
+								<h3 class="blank1">Report</h3>
+								 <div class="xs tabls">
+									<div class="bs-example4" data-example-id="contextual-table">
+									<table class="table">
+									  <thead>
+							<h3>Today Report</h3>			
+						<tr>
+							<th>Cases</th>
+							<th>Male</th>
+							<th>Female</th>
+							<th>Total</th>
+						</tr>
+						
+					<tr>
+						<th>Positive Case</th>
+						<td>{{tp_male}}</td>
+						<td>{{tp_female}}</td>
+						<td>{{total_postive_today}}</td>
+					</tr>
+					<tr>
+						<th>NegativeCase</th>
+						<td>{{tn_female}}</td>
+						<td>{{tn_male}}</td>
+						<td>{{total_negative_today}}</td>
+					</tr>
+						<th>Death Case</th>
+						<td>{{tdm_death}}</td>
+						<td>{{tdf_death}}</td>
+						<td>{{total_deathcase_today}}</td>
+					</tr>
+
+					
+					</tbody>
+						</table>
+
+
+
+						<table class="table">
+							<thead>
+				  <h3>Till Now Report</h3>			
+			 
+				  <tr>
+					<th>Cases</th>
+					<th>Male</th>
+					<th>Female</th>
+					<th>Total</th>
+				</tr>
+				
+			<tr>
+				<th>Positive Case</th>
+				<td>{{p_male}}</td>
+				<td>{{p_female}}</td>
+				<td>{{total_postive}}</td>
+			</tr>
+			<tr>
+				<th>NegativeCase</th>
+				<td>{{n_female}}</td>
+				<td>{{n_male}}</td>
+				<td>{{total_negative}}</td>
+			</tr>
+				<th>Death Case</th>
+				<td>{{dm_death}}</td>
+				<td>{{df_death}}</td>
+				<td>{{total_deathcase}}</td>
+			</tr>
+		  </tbody>
+			  </table>
+
+
+
+
+
+					</div>
+								   
+									</div><!-- /.table-responsive -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+	
+			<!-- switches -->
+		<div class="switches">
+			<div class="col-4">
+				{% if user.center.center_type == 'Hospital' %}
+				<button style=" margin-left: 33em; height:4em; margin-bottom: 6em; margin-top: 3em;"><a href="{% url 'centerresult' %}" >YOUR DETAILS</a></button>
+				{% elif user.center.center_type == 'CSLTC' %}
+				<button style=" margin-left: 33em; height:4em; margin-bottom: 6em; margin-top: 3em;"><a href="{% url 'centerresult' %}" >YOUR DETAILS</a></button>
+				{% elif user.center.center_type == 'CFLTC' %}
+				<button style=" margin-left: 33em; height:4em; margin-bottom: 6em; margin-top: 3em;"><a href="{% url 'centerresult' %}" >YOUR DETAILS</a></button>
+				{% elif user.center.center_type == 'Domicile' %}
+				<button style=" margin-left: 33em; height:4em; margin-bottom: 6em; margin-top: 3em;"><a href="{% url 'centerresult' %}" >YOUR DETAILS</a></button>
+				{% elif user.home %}
+				<button style=" margin-left: 33em; height:4em; margin-bottom: 6em; margin-top: 3em;"><a href="{% url 'homeresult' %}" >YOUR DETAILS</a></button>
+				{% elif user.lab %}
+				<button style=" margin-left: 33em; height:4em; margin-bottom: 6em; margin-top: 3em;"><a href="{% url 'resultlabs' %}" >YOUR DETAILS</a></button>
+				{% elif user.dmo %}
+				<button style=" margin-left: 33em; height:4em; margin-bottom: 6em; margin-top: 3em;"><a href="" >YOUR DETAILS</a></button>
+				{% elif user.patient_register %}
+				<button style=" margin-left: 33em; height:4em; margin-bottom: 6em; margin-top: 3em;"><a href="" >YOUR DETAILS</a></button>
+				
+				{% elif user.doctor %}
+				<button style=" margin-left: 33em; height:4em; margin-bottom: 6em; margin-top: 3em;"><a href="" >YOUR DETAILS</a></button>
+				{% endif %}
+				<div class="col_1" style="margin-left: 10em;">
+				
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+			</div>
+			<div class="clearfix"> </div>
+			
+		</div>
+				</div>
+			
+			</div>
+			 <!--body wrapper end-->
+		</div>
+		{% endblock %}
+        <!--footer section start-->
+			<footer>
+			   
+			</footer>
+        <!--footer section end-->
+
+      <!-- main content end-->
+   </section>
+  
+<script src="/static/dashboard/js/jquery.nicescroll.js"></script>
+<script src="/static/dashboard/js/scripts.js"></script>
+<!-- Bootstrap Core JavaScript -->
+   <script src="/static/dashboard/js/bootstrap.min.js"></script>
+</body>
+</html>

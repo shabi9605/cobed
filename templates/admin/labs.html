@@ -1,0 +1,58 @@
+{% extends 'dashboard/index.html' %}
+{% block content %}
+
+			<div id="page-wrapper">
+				<div class="graphs">
+					<h3 class="blank1">Home</h3>
+					 <div class="xs tabls">
+						<div class="bs-example4" data-example-id="contextual-table">
+                            <table class="table">
+                                {% if c %}
+                                <thead>
+                                    <tr>
+                                      <th>Name</th>
+                                      <th>Pincode</th>
+                                       <th>Lab Type</th>
+                                       <th>Phone</th>
+                                       <th>Certificate</th>
+                                       <th>center</th>
+                                       
+                                        <th>Approval Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for l in c %}
+                                    <tr>
+                                        <td>{{l.lab_name}}</td>
+                                        <td>{{l.lab_pincode}}</td>
+                                        <td>{{l.lab_type}}</td>
+                                        <td>{{l.phonenumber}}</td>
+                                        <td><a href="{{l.lab_certificate.url}}">Certificate</a></td>
+                                        <td>{{l.center}}</td>
+                                       
+                                     {% if l.status_appruval == True %}
+                                        <td>Approved</td>
+                                        {% else %}
+                                        
+                                        <td><a href="{% url 'labappruval' l.id %}" style="color: red;">Approve Now</a></td>
+        
+                                        {% endif %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                            {% else %}
+                            <h4>No Centers Registerd For appruval</h4>
+                            {% endif %}
+                                  
+					   </div>
+					   
+						</div><!-- /.table-responsive -->
+						</div>
+					</div>
+				</div>
+			</div>
+           
+		</div>
+   
+		{% endblock %}

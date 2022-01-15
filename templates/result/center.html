@@ -1,0 +1,159 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+{% include 'dashboard/left.html' %}
+		<!-- left side end-->
+    {% include 'dashboard/header.html' %}
+			{% block content %}
+		<!-- //header-ends -->
+	
+		
+			<div id="page-wrapper" >
+				<div class="graphs">
+					<div class="col_3">
+						<div id="page-wrapper">
+							<div class="graphs">
+								<h3 class="blank1">Report</h3>
+								 <div class="xs tabls">
+									<div class="bs-example4" data-example-id="contextual-table">
+									<table class="table">
+									  <thead>
+                                          <h4>Doctor Available</h4>
+                                        <tr>
+                                            <th>Name</th>
+                                            
+                                        </tr>
+                                        
+                                        <tr>
+                                            {% if doctors %}
+                                            {% for i in doctor %}
+                                            <th>{{i.name}}</th>
+                                            {% endfor %}
+                                            {% else %}
+                                            <td>Not available</td>
+                                            {% endif %}							
+                                        </tr>
+                                        <table border="2" style="width: 60em;">
+
+                                        <h2> Till Now </h2>
+                                            
+                                            <tr>
+                                            <th>Positive Case</th>
+                                            <th>NegativeCase</th>
+                                            <th>Death Case</th>
+                                            <th>Discharged</th>
+                                        </tr>
+                                        <tr>
+                                            <td>{{center_patient_positive}}</td>
+                                            <td>{{center_patient_negative}}</td>
+                                            <td>{{center_patient_daeath}}</td>
+                                            {% if patient_status %}
+                                            <td>{{patient_status}}</td>
+                                            {% else %}
+                                            <td>No patients</td>
+                                            {% endif %}
+                                        </tr>
+
+                                        
+                                        </table>
+                                    </div>
+                                    
+                                <br>
+                        
+                                <br>
+                                    <div style="width: 60em;">
+                                        <h2> Today Now </h2>
+                                        <table border="2" style="width: 60em;">
+                                            
+                                            <tr>
+                                            <th>Positive Case</th>
+                                            <th>NegativeCase</th>
+                                            <th>Death Case</th>
+                                            <th>Discharged</th>
+                                        </tr>
+                                        <tr>
+                                            <td>{{center_patient_positive_t}}</td>
+                                            <td>{{center_patient_negative_t}}</td>
+                                            <td>{{center_patient_daeath_t}}</td>
+                                            {% if patient_status %}
+                                            <td>{{patient_status_t}}</td>
+                                            {% else %}
+                                            <td>No patients</td>
+                                            {% endif %}
+                                        </tr>
+		  
+		  </tbody>
+			  </table>
+
+
+
+
+
+					</div>
+								   
+									</div><!-- /.table-responsive -->
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+	
+			<!-- switches -->
+		<div class="switches">
+			<div class="col-4">
+				{% if user.center.center_type == 'Hospital' %}
+				<button style=" margin-left: 33em; height:4em; margin-bottom: 6em; margin-top: 3em;"><a href="" >YOUR DETAILS</a></button>
+				{% elif user.center.center_type == 'CSLTC' %}
+				<button style=" margin-left: 33em; height:4em; margin-bottom: 6em; margin-top: 3em;"><a href="" >YOUR DETAILS</a></button>
+				{% elif user.center.center_type == 'CFLTC' %}
+				<button style=" margin-left: 33em; height:4em; margin-bottom: 6em; margin-top: 3em;"><a href="" >YOUR DETAILS</a></button>
+				{% elif user.center.center_type == 'Domicile' %}
+				<button style=" margin-left: 33em; height:4em; margin-bottom: 6em; margin-top: 3em;"><a href="" >YOUR DETAILS</a></button>
+				{% elif user.home %}
+				<button style=" margin-left: 33em; height:4em; margin-bottom: 6em; margin-top: 3em;"><a href="" >YOUR DETAILS</a></button>
+				{% elif user.lab %}
+				<button style=" margin-left: 33em; height:4em; margin-bottom: 6em; margin-top: 3em;"><a href="" >YOUR DETAILS</a></button>
+				{% elif user.dmo %}
+				<button style=" margin-left: 33em; height:4em; margin-bottom: 6em; margin-top: 3em;"><a href="" >YOUR DETAILS</a></button>
+				{% elif user.patient_register %}
+				<button style=" margin-left: 33em; height:4em; margin-bottom: 6em; margin-top: 3em;"><a href="" >YOUR DETAILS</a></button>
+				{% elif user.userregister %}
+				<button style=" margin-left: 33em; height:4em; margin-bottom: 6em; margin-top: 3em;"><a href="" >YOUR DETAILS</a></button>
+				{% elif user.doctor %}
+				<button style=" margin-left: 33em; height:4em; margin-bottom: 6em; margin-top: 3em;"><a href="" >YOUR DETAILS</a></button>
+				{% endif %}
+				<div class="col_1" style="margin-left: 10em;">
+				
+				</div>
+			</div>
+			<div class="clearfix"> </div>
+			</div>
+			<div class="clearfix"> </div>
+			
+		</div>
+				</div>
+			
+			</div>
+			 <!--body wrapper end-->
+		</div>
+		{% endblock %}
+        <!--footer section start-->
+			<footer>
+			   <p>cobed| Design by <a href="https://w3layouts.com/" target="_blank">alwin.</a></p>
+			</footer>
+        <!--footer section end-->
+
+      <!-- main content end-->
+   </section>
+  
+<script src="/static/dashboard/js/jquery.nicescroll.js"></script>
+<script src="/static/dashboard/js/scripts.js"></script>
+<!-- Bootstrap Core JavaScript -->
+   <script src="/static/dashboard/js/bootstrap.min.js"></script>
+</body>
+</html>

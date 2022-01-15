@@ -1,0 +1,39 @@
+{% extends 'dashboard/index.html' %}
+{% block content %}
+{% if doctors %}
+			<div id="page-wrapper">
+				<div class="graphs">
+					<h3 class="blank1">Doctors </h3>
+					 <div class="xs tabls">
+						<div class="bs-example4" data-example-id="contextual-table">
+                            <table class="table">
+                                <thead><thead>
+                                    <tr>
+                                      <th>Name</th>
+                                      <th>Phone Number</th>
+                                      <th>Qualification</th>
+                                      <th>Address</th>
+                                      <th>Doctor Availablity</th>
+                                      <!-- <th>Created Date</th> -->
+                                       <!-- <th>Replay Date</th> -->
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for l in doctors %}
+                                    <tr>
+                                        <td>{{l.name}}</td>
+                                        <td>{{l.phonenumber}}</td>
+                                        <td>{{l.qualification}}</td>
+                                       <td>{{l.address}}</td>
+                                       <td>{{l.doctor_avilability}}</td>
+        
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+        
+                                    </table>
+                                    {% else %}
+                                    <h2>No Complaint</h2>
+                                    {% endif %}
+                                  
+		{% endblock %}

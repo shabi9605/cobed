@@ -1,0 +1,196 @@
+<!--
+Author: W3layouts
+Author URL: http://w3layouts.com
+-->
+<!doctype html>
+<html lang="en">
+{% include 'nav.html' %}
+<style type="text/css">
+    .form-style-5{
+        max-width: 700px;
+        padding: 10px 20px;
+        background: #f4f7f8;
+        margin: 10px auto;
+        padding: 20px;
+        background: #f4f7f8;
+        border-radius: 8px;
+        font-family: Georgia, "Times New Roman", Times, serif;
+        color: red;
+        
+    }
+    .form-style-5 fieldset{
+        border: none;
+    }
+    .form-style-5 legend {
+        font-size: 1.4em;
+        margin-bottom: 10px;
+    }
+    .form-style-5 label {
+        display: block;
+        margin-bottom: 8px;
+    }
+    .form-style-5 input[type="text"],
+    .form-style-5 input[type="date"],
+    .form-style-5 input[type="datetime"],
+    .form-style-5 input[type="email"],
+    .form-style-5 input[type="number"],
+    .form-style-5 input[type="search"],
+    .form-style-5 input[type="time"],
+    .form-style-5 input[type="url"],
+    .form-style-5 input[type="tel"],
+    .form-style-5 input[type="password"],
+    .form-style-5 input[type="file"],
+
+
+
+    .form-style-5 textarea,
+    .form-style-5 select {
+        font-family: Georgia, "Times New Roman", Times, serif;
+        background: rgba(255,255,255,.1);
+        border: none;
+        border-radius: 4px;
+        font-size: 15px;
+        margin: 0;
+        outline: 0;
+        padding: 10px;
+        width: 100%;
+        box-sizing: border-box; 
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box; 
+        background-color: #e8eeef;
+        color:brown;
+        -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+        box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+        margin-bottom: 30px;
+    }
+    .form-style-5 input[type="text"]:focus,
+    .form-style-5 input[type="date"]:focus,
+    .form-style-5 input[type="datetime"]:focus,
+    .form-style-5 input[type="email"]:focus,
+    .form-style-5 input[type="number"]:focus,
+    .form-style-5 input[type="search"]:focus,
+    .form-style-5 input[type="time"]:focus,
+    .form-style-5 input[type="url"]:focus,
+    .form-style-5 textarea:focus,
+    .form-style-5 select:focus{
+        background: #d2d9dd;
+    }
+    .form-style-5 select{
+        -webkit-appearance: menulist-button;
+        height:35px;
+    }
+    .form-style-5 .number {
+        background: #1abc9c;
+        color: #fff;
+        height: 30px;
+        width: 30px;
+        display: inline-block;
+        font-size: 0.8em;
+        margin-right: 4px;
+        line-height: 30px;
+        text-align: center;
+        text-shadow: 0 1px 0 rgba(255,255,255,0.2);
+        border-radius: 15px 15px 15px 0px;
+    }
+    
+    .form-style-5 input[type="submit"],
+    .form-style-5 input[type="button"]
+    {
+        position: relative;
+        display: block;
+        padding: 19px 39px 18px 39px;
+        color: #FFF;
+        margin: 0 auto;
+        background: #1abc9c;
+        font-size: 18px;
+        text-align: center;
+        font-style: normal;
+        width: 100%;
+        border: 1px solid #16a085;
+        border-width: 1px 1px 3px;
+        margin-bottom: 10px;
+    }
+    .form-style-5 input[type="submit"]:hover,
+    .form-style-5 input[type="button"]:hover
+    {
+        background: #109177;
+    }
+    </style>
+  <!--/header-->
+<!-- breadcrumb -->
+
+<section class="w3l-about-breadcrumb text-center" >
+  <div class="breadcrumb-bg breadcrumb-bg-about py-5">
+      <div class="container py-lg-5 py-md-4">
+        <div class="w3breadcrumb-gids">
+          <div class="w3breadcrumb-left text-left" >
+            <!-- <div class="banner-slide bg1" > -->
+                <div class="container" >
+                    <div class="hero-content">
+                        <div id="page-wrapper"  >
+                            <div class="main-page">
+                                <div class="sign-form">
+
+                                    <!-- <h4>Sign Up</h4>
+                                    <h5><strong>Create</strong> your account.</h5> -->
+                                    <div class="form-style-5">
+                                        {% for msg in messages %}{{msg}}{% endfor %}
+                                        <form action="" method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <fieldset>
+                                        <legend><span class="number">1</span> Login Now</legend>
+                                        <input type="email" name="username" placeholder="Your username *" required>
+                                        <input type="password" name="password" placeholder="Your Password *" required>                                        
+                                        </fieldset>
+                                     
+                                        <input type="submit" value="Login Now" />
+                                        </form>
+                                        </div>
+                                </div>
+                        </div>	
+                        </div>
+                        
+                        <div class="cta-btn" data-animation="fadeInUp" data-delay="1s">
+                            <a href="#url" class="btn btn-style btn-primary"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-overlay"></div>
+            </div>
+
+
+
+                   
+          </div>
+          <div class="w3breadcrumb-right">
+                <ul class="breadcrumbs-custom-path">
+                  <li><a href="{% url 'index' %}">Home</a></li>
+                  <li class="active"><span class="fas fa-angle-double-right mx-2"></span> Contact Us</li>
+                </ul>
+          </div>
+    </div>
+      </div>
+      <div class="hero-overlay"></div>
+  </div>
+</section>
+<!--//breadcrumb-->
+ <!-- contact-form 2 -->
+ <section class="w3l-contact-2 py-5" id="contact">
+  <div class="container py-lg-4 py-md-3 py-2">
+    <div class="title-content text-center">
+     
+
+    </div>
+    
+<!-- /contact-form-2 -->
+<div class="map-iframe">
+  <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d317718.69319292053!2d-0.3817765050863085!3d51.528307984912544!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d8a00baf21de75%3A0x52963a5addd52a99!2sLondon%2C+UK!5e0!3m2!1sen!2spl!4v1562654563739!5m2!1sen!2spl"
+      width="100%" height="400" frameborder="0" style="border: 0px;" allowfullscreen=""></iframe>
+</div>
+  <!-- /contact1 -->
+ <!--/footer-->
+{% include 'footer.html' %}
+</body>
+
+</html>
